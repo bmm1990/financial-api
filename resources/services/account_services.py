@@ -33,5 +33,13 @@ def execute_deposit(account_id, account_balance):
         add_amount_existing_account(account_id, account_balance)
     else:
         create_new_account(account_id, account_balance)    
-    return get_account_full_info(account_id)    
+    return get_account_full_info(account_id)
+
+def get_account_balance(account_id):
+    existing_account = check_if_account_exists(account_id)
+    if existing_account:
+        index = get_account_index(account_id)
+        return accounts[index]["balance"]
+    else:
+        return 0
 
