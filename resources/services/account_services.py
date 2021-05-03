@@ -7,6 +7,9 @@ Created on Sun May  2 18:06:58 2021
 
 accounts = []
 
+def execute_reset():
+    accounts.clear()
+
 def get_account_index(account_id):
     index = next((index for (index, d) in enumerate(accounts) if d["id"] == account_id), None)
     return index
