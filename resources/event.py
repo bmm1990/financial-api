@@ -8,6 +8,7 @@ Created on Sun May  2 16:47:21 2021
 from flask_restful import Resource, request
 from resources.services.account_services import execute_deposit
 from resources.services.account_services import execute_withdraw
+from resources.services.account_services import execute_transfer
 
 class Event(Resource):
     def post(self):
@@ -21,5 +22,11 @@ class Event(Resource):
                 return withdraw, 404
             else:
                 return {"origin": withdraw}, 201
+        elif rcv_json["type"] == "transfer":
+            transfer = execute_transfer(rcv_json["origin"], rcv_json["amount"], rcv_json["destination"])
+            if transfer == 0:
+                return transfer, 404
+            else:
+                return transfer, 201
 
                 

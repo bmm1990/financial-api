@@ -54,3 +54,12 @@ def execute_withdraw(account_id, amount):
         return get_account_full_info(account_id)
     else:
         return 0
+    
+def execute_transfer(origin_id, amount, destination_id):
+    existing_account = check_if_account_exists(origin_id)
+    if existing_account:
+        remove_amount_existing_account(origin_id, amount)
+        destination = execute_deposit(destination_id, amount)
+        return {"origin": get_account_full_info(origin_id), "destination": destination}
+    else:
+        return 0
