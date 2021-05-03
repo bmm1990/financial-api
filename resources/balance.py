@@ -16,4 +16,4 @@ class Balance(Resource):
         if balance == 0:
             return balance, 404
         else:
-            return balance, 201
+            return balance, 200
