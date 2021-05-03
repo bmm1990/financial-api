@@ -28,5 +28,7 @@ class Event(Resource):
                 return transfer, 404
             else:
                 return transfer, 201
+        else:
+            return "Invalid request", 406
 
                 

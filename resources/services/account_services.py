@@ -30,14 +30,6 @@ def add_amount_existing_account(account_id, amount):
    index = get_account_index(account_id)
    accounts[index]["balance"] = accounts[index]["balance"] + amount
 
-def execute_deposit(account_id, account_balance):
-    existing_account = check_if_account_exists(account_id)
-    if existing_account:
-        add_amount_existing_account(account_id, account_balance)
-    else:
-        create_new_account(account_id, account_balance)    
-    return get_account_full_info(account_id)
-
 def get_account_balance(account_id):
     existing_account = check_if_account_exists(account_id)
     if existing_account:
@@ -49,6 +41,14 @@ def get_account_balance(account_id):
 def remove_amount_existing_account(account_id, amount):
    index = get_account_index(account_id)
    accounts[index]["balance"] = accounts[index]["balance"] - amount
+   
+def execute_deposit(account_id, account_balance):
+    existing_account = check_if_account_exists(account_id)
+    if existing_account:
+        add_amount_existing_account(account_id, account_balance)
+    else:
+        create_new_account(account_id, account_balance)    
+    return get_account_full_info(account_id)   
 
 def execute_withdraw(account_id, amount):
     existing_account = check_if_account_exists(account_id)
