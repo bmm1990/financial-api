@@ -21,7 +21,7 @@ class Event(Resource):
             if withdraw == 0:
                 return withdraw, 404
             else:
-                return {"origin": withdraw}, 201
+                return withdraw, 201
         elif rcv_json["type"] == "transfer":
             transfer = execute_transfer(rcv_json["origin"], rcv_json["amount"], rcv_json["destination"])
             if transfer == 0:

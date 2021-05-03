@@ -51,7 +51,7 @@ def execute_withdraw(account_id, amount):
     existing_account = check_if_account_exists(account_id)
     if existing_account:
         remove_amount_existing_account(account_id, amount)
-        return get_account_full_info(account_id)
+        return {"origin": get_account_full_info(account_id)}
     else:
         return 0
     
